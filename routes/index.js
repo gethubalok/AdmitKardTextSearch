@@ -11,7 +11,7 @@ router.post('/insert',async (req,res)=>{
     console.log(req.body);
    try {
     const data=await user.create(req.body);
-   return res.render('search');
+    res.render('search');
    } catch (error) {
       return res.status(400).json({
            message:error
