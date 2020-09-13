@@ -15,7 +15,7 @@ const bodyParser=require('body-parser');
 const mongoose=require('mongoose');
 
 // connect to DB..
-mongoose.connect('mongodb+srv://alok:alok@cluster0.atba1.mongodb.net/TextSearch?retryWrites=true&w=majority ', // took data from .env file
+mongoose.connect('mongodb+srv://alok:alok@cluster0.atba1.mongodb.net/Book?retryWrites=true&w=majority', // took data from .env file
     { useUnifiedTopology: true,useNewUrlParser: true }, 
 ()=>console.log('Connected to DB...')
 );
