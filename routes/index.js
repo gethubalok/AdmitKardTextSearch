@@ -13,7 +13,7 @@ router.post('/insert',async (req,res)=>{
     const data=await user.create(req.body);
     res.render('search',{
         title:"Search here",
-        data:null
+        data:[]
     });
    } catch (error) {
        res.status(400).json({
@@ -32,7 +32,7 @@ router.get('/search',async (req,res)=>{
         });
         console.log(data2);
         return res.render('search',{
-            title:"My Contact",
+            title:"Search here..",
             data:data2
         });
     } catch (error) {
