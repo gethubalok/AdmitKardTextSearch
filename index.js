@@ -6,11 +6,11 @@ const bodyParser=require('body-parser');
 const mongoose=require('mongoose');
 
 // connect to DB..
-mongoose.connect('mongodb+srv://alok:alok@cluster0.atba1.mongodb.net/Text?retryWrites=true&w=majority', // took data from .env file
-    { useUnifiedTopology: true,useNewUrlParser: true }, 
-()=>console.log('Connected to DB...')
-);
-// const db=require('./config/db');
+// mongoose.connect('mongodb+srv://alok:alok@cluster0.atba1.mongodb.net/Text?retryWrites=true&w=majority', // took data from .env file
+//     { useUnifiedTopology: true,useNewUrlParser: true }, 
+// ()=>console.log('Connected to DB...')
+// );
+const db=require('./config/db');
 
 // MiddleWares...
 app.use(express.static('./assets'));
