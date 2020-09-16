@@ -29,8 +29,15 @@ router.get('/search',async (req,res)=>{
         const data2=await user.find({tags : { $regex: `${req.query.search}`, $options: "i" } },'-__v -createdAt -updatedAt');
 
         
-        data1.map((obj)=>{
-            data2.push(obj);
+        data1.map((obj1)=>{
+            data2.map((obj2)=>{
+                
+                    if(obj2._id !== obj2._id){
+                        data2.push(obj1);
+                    }
+                
+            })
+            
         });
         console.log(data2);
         return res.render('search',{
