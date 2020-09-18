@@ -32,13 +32,16 @@ router.get('/search',async (req,res)=>{
                 data1.push(obj2);  
             })
         const result = [];
-        console.log(data1);
+        // console.log(data1);
+
     const map = new Map();
-    data2.map((item)=>{   
+    data1.map((item)=>{   
     if(!map.has(item._id)){
         console.log(map);
-        map.set(item._id,true);    
+        map.set(item._id,true);  
+
         result.push(item);
+        console.log(result);
     }
 })
         return res.render('search',{
