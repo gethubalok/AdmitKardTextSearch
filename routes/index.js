@@ -22,27 +22,28 @@ router.post('/insert',async (req,res)=>{
    }
 });
 
+
 router.get('/search',async (req,res)=>{
     console.log(req.query.search);
     try {
         const data1=await user.find({query : { $regex: `${req.query.search}`, $options: "i" } },'-__v -createdAt -updatedAt');
-        const data2=await user.find({tags : { $regex: `${req.query.search}`, $options: "i" } },'-__v -createdAt -updatedAt');
-
-        
-        data1.map((obj1)=>{
+        const data2=await user.find({tags : { $regex: `${req.query.search}`, $options: "i" } },'-__v -createdAt -updatedAt');       
             data2.map((obj2)=>{
-                
-                    if(obj2._id !== obj2._id){
-                        data2.push(obj1);
-                    }
-                
+                data1.push(obj2);  
             })
-            
-        });
-        console.log(data2);
+        const result = [];
+        console.log(data1);
+    const map = new Map();
+    data2.map((item)=>{   
+    if(!map.has(item._id)){
+        console.log(map);
+        map.set(item._id,true);    
+        result.push(item);
+    }
+})
         return res.render('search',{
             title:"Search here..",
-            data:data2
+            data:result
         });
     } catch (error) {
         console.log(error);
