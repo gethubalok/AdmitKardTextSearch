@@ -28,22 +28,27 @@ router.get('/search',async (req,res)=>{
     try {
         const data1=await user.find({query : { $regex: `${req.query.search}`, $options: "i" } },'-__v -createdAt -updatedAt');
         const data2=await user.find({tags : { $regex: `${req.query.search}`, $options: "i" } },'-__v -createdAt -updatedAt');       
-            data2.map((obj2)=>{
-                data1.push(obj2);  
+        const ans=[];
+        data1.map((obj1)=>{
+            ans.push(obj1);  
+        })
+        data2.map((obj2)=>{
+                ans.push(obj2);  
             })
         const result = [];
-        // console.log(data1);
+        // console.log(ans);
 
     const map = new Map();
-    data1.map((item)=>{   
-    if(!map.has(item._id)){
-        console.log(map);
-        map.set(item._id,true);  
-
+    var i=0;
+    ans.map((item)=>{
+    if(!map.has(item.query)){
+        console.log(i++);
+        map.set(item.query,true);  
         result.push(item);
-        console.log(result);
     }
 })
+
+
         return res.render('search',{
             title:"Search here..",
             data:result
